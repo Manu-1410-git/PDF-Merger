@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PDF-MAX | PDF Merger</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        *{
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#4f46e5,#06b6d4);
+            min-height:100vh;
+        }
+
+        .navbar{
+            background:rgba(255,255,255,.15)!important;
+            backdrop-filter:blur(10px);
+        }
+
+        .hero{
+            min-height:90vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .card-box{
+            background:rgba(255,255,255,.18);
+            backdrop-filter:blur(18px);
+            border-radius:20px;
+            padding:45px;
+            box-shadow:0 15px 35px rgba(0,0,0,.2);
+            text-align:center;
+            color:white;
+            max-width:650px;
+            width:100%;
+        }
+
+        .upload-box{
+            border:3px dashed rgba(255,255,255,.6);
+            border-radius:15px;
+            padding:40px;
+            margin:30px 0;
+            transition:.3s;
+            cursor:pointer;
+        }
+
+        .upload-box:hover{
+            background:rgba(255,255,255,.1);
+            transform:scale(1.02);
+        }
+
+        .upload-box i{
+            font-size:70px;
+            margin-bottom:20px;
+        }
+
+        input[type=file]{
+            display:none;
+        }
+
+        .btn-custom{
+            background:white;
+            color:#4f46e5;
+            font-weight:600;
+            padding:12px 35px;
+            border-radius:30px;
+            border:none;
+            transition:.3s;
+        }
+
+        .btn-custom:hover{
+            background:#4f46e5;
+            color:white;
+            transform:translateY(-3px);
+        }
+
+        .feature{
+            color:white;
+            margin-top:25px;
+        }
+
+        footer{
+            color:white;
+            text-align:center;
+            padding:20px;
+        }
+
+        h1{
+            font-weight:700;
+        }
+
+        p{
+            opacity:.9;
+        }
+    </style>
+</head>
+<script>
+function showFiles() {
+    const input = document.getElementById("pdfUpload");
+    const output = document.getElementById("fileName");
+
+    if (input.files.length === 0) {
+        output.innerHTML = "No files selected";
+        return;
+    }
+
+    let files = [];
+
+    for (let i = 0; i < input.files.length; i++) {
+        files.push(input.files[i].name);
+    }
+
+    output.innerHTML =
+        "<strong>Selected Files:</strong><br>" + files.join("<br>");
+}
+</script>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-3" href="#">
+            <i class="fa-solid fa-file-pdf text-danger"></i>
+            PDF-MAX
+        </a>
+
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<section class="hero">
+
+<div class="container">
+
+<div class="card-box">
+
+<h1>Merge PDF Files Instantly</h1>
+
+<p class="mt-3">
+Upload multiple PDF files and merge them into one document in seconds.
+Fast, secure and completely free.
+</p>
+
+<form action="/merge" method="POST" enctype="multipart/form-data">
+
+<label for="pdfUpload">
+
+<div class="upload-box">
+
+<i class="fa-solid fa-cloud-arrow-up"></i>
+
+<h4>Drag & Drop PDF Files</h4>
+
+<p>or Click Here to Browse</p>
+
+<input
+    type="file"
+    id="pdfUpload"
+    name="pdfs"
+    multiple
+    accept=".pdf"
+    required
+    onchange="showFiles()">
+
+</div>
+
+</label>
+
+<input
+type="submit"
+class="btn btn-custom"
+value="Merge PDFs">
+
+<p id="fileName" class="mt-3 text-white">
+    No files selected
+</p>
+
+</form>
+
+<div class="row feature text-center">
+
+<div class="col-md-4 mt-4">
+<i class="fa-solid fa-bolt fa-2x mb-2"></i>
+<h5>Fast</h5>
+<p>Merges PDFs within seconds.</p>
+</div>
+
+<div class="col-md-4 mt-4">
+<i class="fa-solid fa-lock fa-2x mb-2"></i>
+<h5>Secure</h5>
+<p>Your files remain private.</p>
+</div>
+
+<div class="col-md-4 mt-4">
+<i class="fa-solid fa-download fa-2x mb-2"></i>
+<h5>Easy</h5>
+<p>Download merged PDF instantly.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 PDF-MAX | Designed with ❤️
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
